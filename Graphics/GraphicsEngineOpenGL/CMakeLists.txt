@@ -155,7 +155,11 @@ endif()
 
 add_library(Diligent-GraphicsEngineOpenGLInterface INTERFACE)
 target_link_libraries     (Diligent-GraphicsEngineOpenGLInterface INTERFACE Diligent-GraphicsEngineInterface)
-target_include_directories(Diligent-GraphicsEngineOpenGLInterface INTERFACE interface)
+target_include_directories(Diligent-GraphicsEngineOpenGLInterface 
+    INTERFACE 
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/interface>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Graphics/GraphicsEngineOpenGL/interface>"
+)
 
 
 add_library(Diligent-GraphicsEngineOpenGL-static STATIC

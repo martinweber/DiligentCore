@@ -98,7 +98,11 @@ set(DLL_SRC
 
 add_library(Diligent-GraphicsEngineD3D11Interface INTERFACE)
 target_link_libraries     (Diligent-GraphicsEngineD3D11Interface INTERFACE Diligent-GraphicsEngineD3DBaseInterface)
-target_include_directories(Diligent-GraphicsEngineD3D11Interface INTERFACE interface)
+target_include_directories(Diligent-GraphicsEngineD3D11Interface 
+    INTERFACE 
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/interface>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Graphics/GraphicsEngineD3D11/interface>"
+)
 
 
 add_library(Diligent-GraphicsEngineD3D11-static STATIC 

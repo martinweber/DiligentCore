@@ -163,7 +163,11 @@ set_source_files_properties(${COMPILED_SHADERS} PROPERTIES GENERATED TRUE)
 
 add_library(Diligent-GraphicsEngineD3D12Interface INTERFACE)
 target_link_libraries     (Diligent-GraphicsEngineD3D12Interface INTERFACE Diligent-GraphicsEngineD3DBaseInterface)
-target_include_directories(Diligent-GraphicsEngineD3D12Interface INTERFACE interface)
+target_include_directories(Diligent-GraphicsEngineD3D12Interface 
+    INTERFACE 
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/interface>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Graphics/GraphicsEngineD3D12/interface>"
+)
 
 
 add_library(Diligent-GraphicsEngineD3D12-static STATIC

@@ -145,7 +145,11 @@ set(DLL_SOURCE
 
 add_library(Diligent-GraphicsEngineVkInterface INTERFACE)
 target_link_libraries     (Diligent-GraphicsEngineVkInterface INTERFACE Diligent-GraphicsEngineInterface)
-target_include_directories(Diligent-GraphicsEngineVkInterface INTERFACE interface)
+target_include_directories(Diligent-GraphicsEngineVkInterface 
+    INTERFACE 
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/interface>"
+        "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Graphics/GraphicsEngineVulkan/interface>"
+)
 
 
 add_library(Diligent-GraphicsEngineVk-static STATIC
@@ -163,7 +167,7 @@ endif()
 
 target_include_directories(Diligent-GraphicsEngineVk-static
 PRIVATE
-    include
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 )
 
 set(PRIVATE_DEPENDENCIES
