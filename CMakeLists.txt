@@ -518,6 +518,9 @@ if(DILIGENT_INSTALL_CORE)
     )
 
     install(FILES License.txt DESTINATION "Licenses" RENAME DiligentEngine-License.txt)
+
+    include(package-config.cmake)
+
 endif(DILIGENT_INSTALL_CORE)
 
 # Create a custom target to run source code formatting validation command

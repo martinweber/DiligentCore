@@ -1,0 +1,9 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+libdir=@CMAKE_INSTALL_FULL_LIBDIR@
+
+Name: DiligentCore
+Description: Diligent Core is a modern cross-platfrom low-level graphics API that makes the foundation of Diligent Engine. 
+Version: @DILIGENT_CORE_VERSION@
+URL: https://github.com/DiligentGraphics/DiligentCore
