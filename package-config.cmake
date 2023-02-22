@@ -34,11 +34,41 @@ message(DEBUG "Backend Interfaces: ${diligent_core_backend_interfaces_}")
 
 install(
     TARGETS 
+        Diligent-Archiver-static
+        Diligent-ArchiverInterface
         Diligent-BuildSettings 
         Diligent-PublicBuildSettings 
         Diligent-Primitives
+        Diligent-Common
+        Diligent-BasicPlatform
+        Diligent-Win32Platform
+        Diligent-PlatformInterface
+        Diligent-ShaderTools
+        Diligent-HLSL2GLSLConverterLib
+        xxhash
+        Vulkan-Headers
+        volk_headers
+        glslang
+        glew-static
+        spirv-cross-core
+        SPIRV-Tools-opt
+        SPIRV-Tools-static
+        SPIRV
+        OGLCompiler
+        OSDependent
+        MachineIndependent
+        GenericCodeGen
+        Diligent-GraphicsTools
+        Diligent-GraphicsAccessories
+        Diligent-GraphicsEngine
         Diligent-GraphicsEngineInterface
+        Diligent-GraphicsEngineD3DBase
         Diligent-GraphicsEngineD3DBaseInterface
+        Diligent-GraphicsEngineD3D11-static
+        Diligent-GraphicsEngineD3D12-static
+        Diligent-GraphicsEngineVk-static
+        Diligent-GraphicsEngineOpenGL-static
+        Diligent-GraphicsEngineNextGenBase
         ${diligent_core_backends_}
         ${diligent_core_backend_interfaces_}
     EXPORT DiligentCoreTargets

@@ -82,9 +82,10 @@ add_library(Diligent-GraphicsTools STATIC ${SOURCE} ${INTERFACE})
 
 target_include_directories(Diligent-GraphicsTools
 PUBLIC
-    interface
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/interface>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Graphics/GraphicsTools/interface>"
 PRIVATE
-    ../GraphicsEngineD3DBase/include
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../GraphicsEngineD3DBase/include>"
 )
 
 target_link_libraries(Diligent-GraphicsTools

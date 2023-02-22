@@ -48,7 +48,8 @@ target_include_directories(Diligent-GraphicsEngineD3DBaseInterface
 
 target_include_directories(Diligent-GraphicsEngineD3DBase
 PUBLIC
-    include
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Graphics/GraphicsEngineD3DBase/include>"
 )
 
 target_link_libraries(Diligent-GraphicsEngineD3DBase

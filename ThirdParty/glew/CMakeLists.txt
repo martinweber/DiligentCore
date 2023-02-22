@@ -22,7 +22,8 @@ PUBLIC
 
 target_include_directories(glew-static 
 PUBLIC
-    include
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/ThirdParty/glew/include>"
 )
 
 target_link_libraries(glew-static PRIVATE Diligent-BuildSettings)

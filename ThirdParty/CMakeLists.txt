@@ -25,7 +25,8 @@ if (VULKAN_SUPPORTED OR METAL_SUPPORTED)
         add_library(SPIRV-Headers INTERFACE)
         # Note that SPIRV-Headers_SOURCE_DIR variable is normally created by project(SPIRV-Headers)
         set(SPIRV-Headers_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SPIRV-Headers")
-        target_include_directories(SPIRV-Headers INTERFACE "${SPIRV-Headers_SOURCE_DIR}/include")
+        target_include_directories(SPIRV-Headers INTERFACE "$<BUILD_INTERFACE:${SPIRV-Headers_SOURCE_DIR}/include>"
+            )
         install(FILES "${SPIRV-Headers_SOURCE_DIR}/LICENSE" DESTINATION "Licenses/ThirdParty/${DILIGENT_CORE_DIR}" RENAME SPIRV-Headers-License.txt)
     endif()
 
@@ -36,7 +37,7 @@ if (VULKAN_SUPPORTED OR METAL_SUPPORTED)
         # Vulkan-Headers_SOURCE_DIR variable is normally created by project(Vulkan-Headers)
         set(Vulkan-Headers_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Vulkan-Headers")
         add_library(Vulkan::Headers ALIAS Vulkan-Headers)
-        target_include_directories(Vulkan-Headers INTERFACE "${Vulkan-Headers_SOURCE_DIR}/include")
+        target_include_directories(Vulkan-Headers INTERFACE "$<BUILD_INTERFACE:${Vulkan-Headers_SOURCE_DIR}/include>")
         install(FILES "${Vulkan-Headers_SOURCE_DIR}/LICENSE.txt" DESTINATION "Licenses/ThirdParty/${DILIGENT_CORE_DIR}" RENAME Vulkan-Headers-License.txt)
     endif()
 

@@ -103,13 +103,17 @@ add_library(Diligent-ShaderTools STATIC ${SOURCE} ${INCLUDE} ${DXBC_CHECKSUM_SOU
 
 target_include_directories(Diligent-ShaderTools
 PUBLIC
-    include
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Graphics/ShaderTools/include>"
 PRIVATE
-    ../GraphicsEngine/include
+    "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../GraphicsEngine/include>"
 )
 
 if (DXC_SUPPORTED)
-    target_include_directories(Diligent-ShaderTools PUBLIC ../../ThirdParty/DirectXShaderCompiler)
+    target_include_directories(Diligent-ShaderTools 
+        PUBLIC 
+            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../../ThirdParty/DirectXShaderCompiler>"
+        )
 
     if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         target_compile_options(Diligent-ShaderTools PRIVATE -fms-extensions)
@@ -131,7 +135,10 @@ PUBLIC
 )
 
 if (TARGET Diligent-HLSL2GLSLConverterLib AND NOT ${DILIGENT_NO_HLSL})
-    target_include_directories(Diligent-ShaderTools PRIVATE ../HLSL2GLSLConverterLib/include)
+    target_include_directories(Diligent-ShaderTools 
+        PRIVATE 
+            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../HLSL2GLSLConverterLib/include>"
+    )
     target_link_libraries(Diligent-ShaderTools PRIVATE Diligent-HLSL2GLSLConverterLib)
 else()
     target_compile_definitions(Diligent-ShaderTools PRIVATE DILIGENT_NO_HLSL=1)
